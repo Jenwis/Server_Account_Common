@@ -9,8 +9,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jenwis.common.account.bean.Account;
 
-@Controller  
+@Controller
+@RequestMapping("/account")
 public class AccountController {  
+	
+	@RequestMapping(value="{name}", method = RequestMethod.GET)
+	public @ResponseBody Account getShopInJSON(@PathVariable String name) {
+ 
+		Account account = new Account();
+		account.setAccount(name);
+		account.setStatusCode(1);
+		return account;
+ 
+	}
+
 	
     @RequestMapping(value = "/person/profile/{id}/{name}/{status}", method = RequestMethod.GET)  
     public @ResponseBody  
@@ -24,9 +36,8 @@ public class AccountController {
      * @param account 
      * @return 
      */  
-    @RequestMapping(value = "/account/login", method = RequestMethod.POST)  
-    public @ResponseBody  
-    Account login(@RequestBody Account account) {  
+    @RequestMapping(value = "/login", method = RequestMethod.POST)  
+    public @ResponseBody Account login(@RequestBody Account account) {  
         return account;  
     }  
 }  
