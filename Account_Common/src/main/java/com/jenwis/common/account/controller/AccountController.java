@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jenwis.common.account.bean.Account;
 import com.jenwis.common.account.bean.RegisterReturn;
 import com.jenwis.common.account.config.Config;
+import com.jenwis.common.account.logic.RegisterLogic;
 
 @Controller
 @RequestMapping("/account")
 public class AccountController {  
+	private RegisterLogic registerLogic = new RegisterLogic();
     /** 
      * 登录 
      *  
@@ -32,15 +34,6 @@ public class AccountController {
      */  
     @RequestMapping(value = "/register", method = RequestMethod.POST)  
     public @ResponseBody RegisterReturn register(@RequestBody Account account) {
-    	RegisterReturn registerReturn = new RegisterReturn();
-    	registerReturn.setAccount(account.getAccount());
-    	registerReturn.setStateCode(Config.STATE_CODE_REGISTER_SUCCESS);
-        return registerReturn;
-    }
-    
-    private void checkoutRegister(Account account) {
-    	if (account == null) {
-			
-		}
+        return registerLogic.checkoutRegister(account);
     }
 }  
