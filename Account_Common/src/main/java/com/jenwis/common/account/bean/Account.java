@@ -3,8 +3,14 @@ package com.jenwis.common.account.bean;
 import java.io.Serializable;
 
 public class Account implements Serializable {
+	//账号
 	private String account;
-	private int statusCode;
+	
+	//密码
+	private String password;
+	
+	//授权码
+	private String authCode;
 	
 	/*
 	 * 这里需要一个空构造，由Spring转换对象时，进行初始化
@@ -21,12 +27,20 @@ public class Account implements Serializable {
 		this.account = account;
 	}
 
-	public int getStatusCode() {
-		return statusCode;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setStatusCode(int statusCode) {
-		this.statusCode = statusCode;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getAuthCode() {
+		return authCode;
+	}
+
+	public void setAuthCode(String authCode) {
+		this.authCode = authCode;
 	}
 
 }
